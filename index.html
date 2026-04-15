@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Flourish Psychology</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#1a6b6a;--tm:#2d8b89;--ts:#e8f4f3;--tg:rgba(26,107,106,.12);--cr:#faf8f4;--gd:#c4a265;--gs:rgba(196,162,101,.15);--ch:#2d2d2d;--cd:#1c1c1e;--cm:#2a2a2c;--cl:#3a3a3c;--t1:#2d2d2d;--t2:#6b6b6b;--t3:#9a9a9a;--sg:#7d9e8c;--ss:rgba(125,158,140,.15);--rs:#c4787a;--wh:#fff;--r:16px;--r2:10px;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',-apple-system,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{font-size:16px;-webkit-font-smoothing:antialiased}body{font-family:var(--sans);color:var(--t1);overflow-x:hidden;background:var(--cr)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:center;padding:14px 24px;backdrop-filter:blur(24px);transition:background .3s}
+.nL{background:rgba(250,248,244,.88);border-bottom:1px solid rgba(0,0,0,.04)}.nD{background:rgba(28,28,30,.92);border-bottom:1px solid rgba(255,255,255,.06)}
+.ni{display:flex;gap:4px;border-radius:100px;padding:4px;transition:all .3s}
+.nL .ni{background:var(--wh);box-shadow:0 2px 8px rgba(0,0,0,.04)}.nD .ni{background:var(--cm)}
+.nb{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.02em;padding:10px 24px;border:none;border-radius:100px;cursor:pointer;transition:all .3s;background:transparent}
+.nL .nb{color:var(--t2)}.nD .nb{color:rgba(255,255,255,.5)}.nb.on{background:var(--teal);color:var(--wh)!important}
+.nL .nb:hover:not(.on){background:var(--ts);color:var(--teal)}.nD .nb:hover:not(.on){background:rgba(255,255,255,.06);color:rgba(255,255,255,.8)}
+.Mo{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center}.Mo.on{display:flex}
+.Mb{border-radius:var(--r);padding:40px;width:90%;max-height:85vh;overflow-y:auto;position:relative;animation:fu .4s ease}
+.Mx{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .3s}
+.Np{position:fixed;top:76px;right:24px;padding:14px 24px;border-radius:var(--r2);background:var(--cm);border:1px solid var(--gs);color:#fff;font-size:13px;display:none;z-index:999;animation:fu .4s ease;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.bp{display:inline-flex;align-items:center;justify-content:center;padding:16px 40px;background:var(--teal);color:#fff;border:none;border-radius:100px;font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;transition:all .3s;letter-spacing:.02em}
+.bp:hover{background:var(--tm);transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.bk{display:inline-flex;padding:12px 24px;background:transparent;color:var(--t2);border:1.5px solid rgba(0,0,0,.1);border-radius:100px;font-family:var(--sans);font-size:14px;cursor:pointer;transition:all .3s}
+.bk:hover{border-color:var(--teal);color:var(--teal)}
+.fi{width:100%;padding:16px 20px;border:1.5px solid rgba(0,0,0,.08);border-radius:var(--r2);font-family:var(--sans);font-size:15px;color:var(--ch);background:var(--wh);outline:none;transition:all .3s}
+.fi:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--tg)}.fi::placeholder{color:var(--t3)}
+.oc{padding:20px;border-radius:var(--r2);background:var(--wh);border:1.5px solid rgba(0,0,0,.06);cursor:pointer;transition:all .3s;text-align:center}
+.oc:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}.oc.on{border-color:var(--teal);background:var(--ts)}
+.lc{padding:12px;border-radius:var(--r2);background:var(--cm);margin-bottom:8px;cursor:pointer;transition:all .3s;border-left:3px solid transparent}
+.lc:hover{background:var(--cl);transform:translateX(2px)}.lc.nw{animation:sg .6s ease forwards;border-left-color:var(--gd)}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sg{0%{opacity:0;transform:translateX(-20px)}100%{opacity:1;transform:translateX(0)}}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes br{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.intake-bg{background:linear-gradient(135deg,#faf8f4 0%,#f0eeea 25%,#faf8f4 50%,#e8f4f3 75%,#faf8f4 100%);background-size:400% 400%;animation:br 20s ease infinite}
+.load-screen{position:fixed;inset:0;background:var(--cr);z-index:3000;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .6s}
+.load-screen.hide{opacity:0;pointer-events:none}
+.spinner{width:40px;height:40px;border:2px solid rgba(26,107,106,.1);border-top-color:var(--teal);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:768px){.metrics-g{grid-template-columns:repeat(2,1fr)!important}.pipe-g{grid-template-columns:1fr!important}.og{grid-template-columns:1fr!important}.split-g{grid-template-columns:1fr!important}.tmpl-g{grid-template-columns:1fr!important}.rpt-g{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+
+<nav id="N" class="nL"><div class="ni">
+<button class="nb on" id="nb0" onclick="go(0)">Patient Intake</button>
+<button class="nb" id="nb1" onclick="go(1)">Operator Dashboard</button>
+<button class="nb" id="nb2" onclick="go(2)">Monthly Report</button>
+</div></nav>
+
+<div class="Np" id="NP"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gd);margin-right:8px;animation:pu 1s ease infinite"></span>New inquiry from <strong id="NN"></strong></div>
+
+<div class="Mo" id="calM"><div class="Mb" style="background:var(--cr);max-width:520px">
+<button class="Mx" style="background:rgba(0,0,0,.04);color:var(--t2)" onclick="clM('calM')">&times;</button>
+<div style="font-family:var(--serif);font-size:22px;font-weight:400;color:var(--teal);text-align:center;margin-bottom:8px">Schedule Your First Session</div>
+<div style="font-size:13px;color:var(--t2);text-align:center;margin-bottom:28px">Select a day and time that works for you.</div>
+<div id="calW" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px"></div>
+<div id="calS"></div>
+<div id="calC" style="text-align:center;margin-top:24px;display:none"></div>
+</div></div>
+
+<div class="Mo" id="jrnM"><div class="Mb" style="background:var(--cm);color:#fff;max-width:600px">
+<button class="Mx" style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)" onclick="clM('jrnM')">&times;</button>
+<div id="jrnC"></div>
+</div></div>
+
+<div class="Mo" id="tplM"><div class="Mb" style="background:var(--cm);color:#fff;max-width:560px">
+<button class="Mx" style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)" onclick="clM('tplM')">&times;</button>
+<div id="tplC"></div>
+</div></div>
+
+<!-- VIEW 0: INTAKE -->
+<div id="V0" style="min-height:100vh;padding-top:72px" class="intake-bg">
+<div style="width:100%;max-width:580px;margin:0 auto;padding:40px 24px 60px">
+<div style="text-align:center;margin-bottom:48px;opacity:0;animation:fu .8s ease forwards">
+<h2 style="font-family:var(--serif);font-size:28px;font-weight:400;color:var(--teal)">Flourish Psychology</h2>
+<p style="font-size:13px;color:var(--t3);margin-top:4px;letter-spacing:.08em;text-transform:uppercase">Brooklyn Heights, New York</p>
+</div>
+<div id="dots" style="display:flex;justify-content:center;gap:8px;margin-bottom:40px"></div>
+<div id="s0"></div><div id="s1" style="display:none"></div><div id="s2" style="display:none"></div><div id="s3" style="display:none"></div><div id="s4" style="display:none"></div><div id="s5" style="display:none"></div>
+</div>
+</div>
+
+<!-- VIEW 1: DASHBOARD -->
+<div id="V1" style="display:none;min-height:100vh;padding-top:72px;background:var(--cd);color:#fff"></div>
+
+<!-- VIEW 2: REPORT -->
+<div id="V2" style="display:none;min-height:100vh;padding-top:72px;background:var(--cd);color:#fff"></div>
+<script>
+// === APPS SCRIPT CONFIG ===
+// After deploying your Apps Script web app, paste the URL here:
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYW7DkVd4mM_0Dl0VoaWikW9yVf4khov-gwB6yThos0GV7NEXQEQj09x6ksoHKAU3kNA/exec'; // e.g. 'https://script.google.com/macros/s/AKfycbx.../exec'
+
+var D={concerns:[],history:'',name:'',email:'',phone:''},ST=null,cur=0,sDay=null,sSlot=null;
+var VM={'Anxiety':"We hear you. Our therapists specialize in exactly this.",'Depression':"Thank you. Our team has deep experience with depression.",'Eating & Body Image':"Thank you. We have therapists who specialize in eating and body image.",'Relationships':"Relationships are central to how we feel. We\u2019re here.",'Trauma':"It takes real courage. Our therapists are trained in EMDR.",'Self-Growth':"Investing in yourself is powerful. Let\u2019s find the right person.",'Work & Career':"We work with high-achievers navigating exactly this.",'Something Else':"Whatever you\u2019re going through, we\u2019re here."};
+var CM={'Eating & Body Image':{n:'Dr. Sadi Fox',d:'Specializes in eating disorders and body image.',a:'Next available: Thursday 2:00 PM'},'Anxiety':{n:'Carolyn Light',d:'Extensive experience with anxiety disorders and OCD.',a:'Next available: Wednesday 11:00 AM'},'Depression':{n:'Carolyn Light',d:'Deep expertise in depression and mood disorders.',a:'Next available: Wednesday 11:00 AM'},'Trauma':{n:'Dr. Sadi Fox',d:'Trained in EMDR and trauma-focused approaches.',a:'Next available: Thursday 2:00 PM'},'Relationships':{n:'Carolyn Light',d:'Gottman-trained. Individual and couples sessions.',a:'Next available: Friday 10:00 AM'},'Self-Growth':{n:'Shoshanna Tokar',d:'Self-esteem, confidence, personal development.',a:'Next available: Thursday 3:00 PM'},'Work & Career':{n:'Shoshanna Tokar',d:'Works with high-achievers.',a:'Next available: Thursday 3:00 PM'},'Something Else':{n:'Carolyn Light',d:'Versatile approach for a wide range of concerns.',a:'Next available: Wednesday 11:00 AM'}};
+var TPL=[{num:'Touch 1',title:'Auto-Response Email',body:'Hi [Name],\n\nThank you for reaching out to Flourish Psychology about [concern] support. It takes courage to take this step, and we want you to know that we\u2019re here for you.\n\nI\u2019ll personally reach out to you shortly to answer any questions and help you find the right therapist for your needs.\n\nIf you\u2019d like to schedule a time that works best for you, you can book directly here: [booking link]\n\nWe\u2019re looking forward to connecting.\n\nWarmly,\nStephanie\nFlourish Psychology Care Team'},{num:'Touch 2',title:'Same-Day Phone Call Script',body:'Hi [Name], this is Stephanie from Flourish Psychology. I saw that you reached out today about [concern], and I just wanted to personally connect with you. Do you have a few minutes?\n\n[If voicemail]: Hi [Name], this is Stephanie from Flourish Psychology. I\u2019m reaching out because you connected with us earlier today. No rush at all \u2014 I\u2019ll follow up with an email as well. We\u2019re here for you.'},{num:'Touch 3',title:'Day 2 Follow-Up Email',body:'Hi [Name],\n\nI wanted to follow up on my call yesterday. I know reaching out can feel like a big step, and I want to make sure you have everything you need.\n\nIf you\u2019re ready to schedule your first session, you can book a time here: [booking link]\n\nIf you have any questions at all, I\u2019m just an email away.\n\nWarmly,\nStephanie'},{num:'Touch 4',title:'Day 4 Text Message',body:'Hi [Name], it\u2019s Stephanie from Flourish Psychology. Just checking in \u2014 no pressure at all. When you\u2019re ready, you can book directly here: [booking link]. We\u2019re here for you.'},{num:'Touch 5',title:'Day 7 Phone Call Script',body:'Hi [Name], it\u2019s Stephanie from Flourish Psychology again. I\u2019m following up from last week \u2014 I know timing isn\u2019t always perfect, and I just wanted to make sure you know we\u2019re still here whenever you\u2019re ready.\n\n[Adjust based on previous outcomes]'},{num:'Touch 6',title:'Day 10 Final Outreach',body:'Hi [Name],\n\nI wanted to reach out one more time. I understand that the timing may not be right, and that\u2019s completely okay. Our door is always open.\n\nIf anything changes, you can always reach us at [email] or book directly: [booking link]\n\nTake care of yourself.\n\nWarmly,\nStephanie'},{num:'Touch 7',title:'Day 14 Close-Out',body:'[Internal note: Patient moved to nurture list. Periodic re-engagement quarterly. No further active outreach unless patient initiates contact.]'}];
+
+function tn(){return new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true});}
+function clM(id){document.getElementById(id).classList.remove('on');}
+
+// === VIEW SWITCHING ===
+function go(v){
+for(var i=0;i<3;i++){document.getElementById('V'+i).style.display='none';document.getElementById('nb'+i).classList.remove('on');}
+document.getElementById('V'+v).style.display='block';document.getElementById('nb'+v).classList.add('on');
+var n=document.getElementById('N');n.className=v===0?'nL':'nD';
+document.body.style.background=v===0?'var(--cr)':'var(--cd)';
+window.scrollTo(0,0);
+}
+
+// === DOTS ===
+function dots(s){var d=document.getElementById('dots');d.innerHTML='';for(var i=0;i<5;i++){var x=document.createElement('div');x.style.cssText='height:8px;border-radius:50%;transition:all .3s;';if(i<s){x.style.background='var(--sg)';x.style.width='8px';}else if(i===s){x.style.background='var(--teal)';x.style.width='24px';x.style.borderRadius='4px';}else{x.style.background='rgba(0,0,0,.08)';x.style.width='8px';}d.appendChild(x);}}
+
+// === STEP NAVIGATION ===
+function stp(s){
+document.getElementById('s'+cur).style.display='none';
+if(s===2&&D.concerns.length>0){var vt=document.getElementById('vt2');if(vt)vt.textContent=VM[D.concerns[0]]||VM['Something Else'];}
+if(s===3){var vt=document.getElementById('vt3');if(vt){vt.textContent=D.history==='No'?"Starting therapy for the first time is a meaningful step. We\u2019ll make sure you feel supported.":D.history==='Yes'?"It\u2019s great that you\u2019ve worked with a therapist before. We\u2019ll build on that.":"";}}
+cur=s;var el=document.getElementById('s'+s);el.style.display='block';el.style.opacity='0';el.style.transform='translateY(20px)';
+setTimeout(function(){el.style.transition='all .6s ease';el.style.opacity='1';el.style.transform='translateY(0)';},20);
+dots(s);
+}
+
+function tog(el,v){if(el.classList.contains('on')){el.classList.remove('on');D.concerns=D.concerns.filter(function(c){return c!==v;});}else{el.classList.add('on');D.concerns.push(v);}}
+function sel(el,v){el.parentNode.querySelectorAll('.oc').forEach(function(c){c.classList.remove('on');});el.classList.add('on');D.history=v;}
+
+function doSubmit(){
+ST=new Date();
+D.name=document.getElementById('pn').value||'there';D.email=document.getElementById('pe').value||'';D.phone=document.getElementById('pp').value||'';
+var cc=D.concerns,ct='';
+if(cc.length===1)ct=cc[0].toLowerCase();else if(cc.length>1)ct=cc.slice(0,-1).map(function(c){return c.toLowerCase();}).join(', ')+' and '+cc[cc.length-1].toLowerCase();
+// Send email via Apps Script
+if(APPS_SCRIPT_URL&&D.email){try{fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({name:D.name,email:D.email,phone:D.phone,concern:ct})});}catch(e){console.log('Email send error:',e);}}
+// Show finding screen
+var el=document.getElementById('s5');el.style.display='block';el.style.opacity='0';document.getElementById('s'+cur).style.display='none';cur=5;
+el.innerHTML='<div style="text-align:center;padding:80px 0"><div class="spinner" style="margin:0 auto 24px"></div><p style="font-family:var(--serif);font-size:20px;color:var(--teal)">Finding the right fit for you...</p></div>';
+el.style.opacity='1';
+dots(5);
+setTimeout(function(){
+var msg=cc.length>0?'You mentioned you\u2019re looking for support with '+ct+'. We have therapists who specialize in exactly that, and Stephanie from our care team will reach out to you shortly to help you find the right fit.':'Stephanie from our care team will reach out to you shortly to connect you with the right therapist.';
+el.innerHTML='<div style="text-align:center;padding:60px 0;animation:fu .6s ease"><div style="width:64px;height:64px;border-radius:50%;background:var(--ss);display:flex;align-items:center;justify-content:center;margin:0 auto 28px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--sg)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><h2 style="font-family:var(--serif);font-size:28px;font-weight:400;color:var(--teal);margin-bottom:16px">Thank you, '+D.name+'.</h2><p style="font-size:15px;color:var(--t2);line-height:1.7;max-width:420px;margin:0 auto">'+msg+'</p><br><a onclick="opM(\'calM\');bCal();" style="display:inline-block;margin-top:20px;font-size:14px;color:var(--teal);cursor:pointer;border-bottom:1px solid var(--tg);padding-bottom:2px">Prefer to schedule directly? Book a time here.</a></div>';
+setTimeout(function(){dashUp();},2000);
+},2000);
+}
+
+// === CALENDAR ===
+function opM(id){document.getElementById(id).classList.add('on');}
+function bCal(){
+var w=document.getElementById('calW');w.innerHTML='';var days=['Mon','Tue','Wed','Thu','Fri'];var t=new Date();
+for(var i=1;i<=5;i++){(function(idx){var d=new Date(t);d.setDate(t.getDate()+idx);
+var el=document.createElement('div');el.style.cssText='padding:10px 16px;border-radius:10px;background:var(--wh);border:1.5px solid rgba(0,0,0,.06);cursor:pointer;text-align:center;min-width:80px;transition:all .3s';
+el.innerHTML='<div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.06em">'+days[idx%5]+'</div><div style="font-size:15px;font-weight:500;color:var(--ch);margin-top:2px">'+d.toLocaleDateString('en-US',{month:'short',day:'numeric'})+'</div>';
+el.onclick=function(){w.querySelectorAll(':scope > div').forEach(function(c){c.style.borderColor='rgba(0,0,0,.06)';c.style.background='var(--wh)';});this.style.borderColor='#1a6b6a';this.style.background='var(--ts)';sDay=days[idx%5];shSlots(sDay);};
+w.appendChild(el);})(i);}
+}
+function shSlots(day){
+var sl={Mon:[{t:'10:00 AM',c:'Shoshanna Tokar',a:1},{t:'2:00 PM',c:'Henna Samtani',a:1},{t:'4:00 PM',c:'Carolyn Light',a:0}],Tue:[{t:'9:00 AM',c:'Carolyn Light',a:1},{t:'11:00 AM',c:'Shoshanna Tokar',a:1},{t:'3:00 PM',c:'Dr. Fox',a:0}],Wed:[{t:'11:00 AM',c:'Carolyn Light',a:1},{t:'1:00 PM',c:'Henna Samtani',a:1},{t:'3:00 PM',c:'Dr. Fox',a:1}],Thu:[{t:'10:00 AM',c:'Shoshanna Tokar',a:1},{t:'2:00 PM',c:'Dr. Fox',a:1},{t:'4:00 PM',c:'Carolyn Light',a:1}],Fri:[{t:'9:00 AM',c:'Carolyn Light',a:1},{t:'11:00 AM',c:'Henna Samtani',a:0},{t:'2:00 PM',c:'Dr. Fox',a:1}]};
+var s=sl[day]||[];
+document.getElementById('calS').innerHTML='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+s.map(function(x){return '<div onclick="'+(x.a?'pkSlot(this,\''+x.t+'\',\''+x.c+'\')':'')+'" style="padding:12px;border-radius:10px;background:var(--wh);border:1.5px solid rgba(0,0,0,.06);cursor:'+(x.a?'pointer':'default')+';text-align:center;font-size:14px;color:var(--ch);opacity:'+(x.a?'1':'.35')+';transition:all .3s">'+x.t+(x.a?'':' (Booked)')+'<div style="font-size:11px;color:var(--t3);margin-top:4px">'+x.c+'</div></div>';}).join('')+'</div>';
+document.getElementById('calC').style.display='none';
+}
+function pkSlot(el,t,c){el.parentNode.querySelectorAll(':scope > div').forEach(function(s){s.style.borderColor='rgba(0,0,0,.06)';s.style.background='var(--wh)';});el.style.borderColor='#1a6b6a';el.style.background='var(--ts)';sSlot={t:t,c:c};document.getElementById('calC').style.display='block';document.getElementById('calC').innerHTML='<button class="bp" onclick="book()">Confirm Appointment</button>';}
+function book(){clM('calM');addAF(tn(),'cv',D.name||'Patient','Appointment booked with '+sSlot.c+' for '+sDay+' '+sSlot.t);}
+
+// === JOURNEY MODAL ===
+function sJ(n,c,h,t){
+document.getElementById('jrnC').innerHTML='<div style="margin-bottom:24px"><div style="font-family:var(--serif);font-size:24px;color:#fff;margin-bottom:4px">'+n+'</div><div style="font-size:13px;color:var(--tm);margin-bottom:4px">'+c+(h==='Yes'?' \u2014 Previous therapy experience':' \u2014 First time seeking therapy')+'</div></div><div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Patient Journey</div><div style="border-left:2px solid var(--teal);padding-left:16px"><div style="margin-bottom:16px"><div style="font-size:11px;color:var(--t3)">'+t+'</div><div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:2px">Inquiry received via website intake</div><div style="font-size:12px;color:rgba(255,255,255,.5)">Concern: '+c+'</div></div><div style="margin-bottom:16px"><div style="font-size:11px;color:var(--t3)">'+t+' + 12s</div><div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:2px">Auto-response email sent</div><div style="font-size:12px;color:rgba(255,255,255,.5)">Personalized for '+c.toLowerCase()+'</div></div><div style="margin-bottom:16px"><div style="font-size:11px;color:var(--gd)">In progress</div><div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:2px">Same-day call \u2014 Stephanie assigned</div></div><div style="opacity:.4"><div style="font-size:11px;color:var(--t3)">Scheduled</div><div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:2px">Touches 3-7 queued</div></div></div>';
+opM('jrnM');
+}
+
+// === TEMPLATE MODAL ===
+function shTpl(i){
+var t=TPL[i];
+document.getElementById('tplC').innerHTML='<div style="font-size:11px;color:var(--gd);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">'+t.num+'</div><div style="font-family:var(--serif);font-size:22px;color:#fff;margin-bottom:16px">'+t.title+'</div><div style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;padding:20px;background:rgba(255,255,255,.03);border-radius:var(--r2);border-left:2px solid var(--teal);white-space:pre-line">'+t.body+'</div><div style="margin-top:20px;text-align:center"><button class="bp" style="padding:12px 32px;font-size:14px" onclick="clM(\'tplM\')">Close</button></div>';
+opM('tplM');
+}
+
+// === NOTIFICATION SOUND ===
+function chime(){try{var a=new(window.AudioContext||window.webkitAudioContext)();var o=a.createOscillator();var g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=528;o.type='sine';g.gain.setValueAtTime(.15,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+1.5);o.start(a.currentTime);o.stop(a.currentTime+1.5);}catch(e){}}
+
+// === VALIDATION ===
+function valS1(){if(D.concerns.length===0){document.getElementById('err1').style.display='block';setTimeout(function(){document.getElementById('err1').style.display='none';},3000);return;}stp(2);}
+function valS3(){var n=document.getElementById('pn').value.trim(),e=document.getElementById('pe').value.trim(),p=document.getElementById('pp').value.trim();if(!n||!e||!p){document.getElementById('err3').style.display='block';if(!n)document.getElementById('pn').style.borderColor='var(--rs)';if(!e)document.getElementById('pe').style.borderColor='var(--rs)';if(!p)document.getElementById('pp').style.borderColor='var(--rs)';setTimeout(function(){document.getElementById('err3').style.display='none';document.querySelectorAll('.fi').forEach(function(f){f.style.borderColor='rgba(0,0,0,.08)';});},3000);return;}stp(4);}
+
+// === BUILD INTAKE ===
+function buildIntake(){
+var opts=['Anxiety','Depression','Eating & Body Image','Relationships','Trauma','Self-Growth','Work & Career','Something Else'];
+document.getElementById('s0').innerHTML='<div style="text-align:center;padding:60px 0;animation:fu .8s ease"><h1 style="font-family:var(--serif);font-size:36px;font-weight:300;color:var(--teal);line-height:1.3;margin-bottom:20px">We\u2019re glad you\u2019re here.</h1><p style="font-size:16px;color:var(--t2);line-height:1.7;max-width:420px;margin:0 auto 40px">Taking this step matters, and we want to make it as easy as possible. Let\u2019s start by getting to know a little about you.</p><button class="bp" onclick="stp(1)">Let\u2019s begin</button></div>';
+var og='';opts.forEach(function(o){og+='<div class="oc" onclick="tog(this,\''+o+'\')"><div style="font-size:15px;font-weight:500;color:var(--ch)">'+o+'</div></div>';});
+document.getElementById('s1').innerHTML='<p style="font-family:var(--serif);font-size:26px;font-weight:400;text-align:center;color:var(--ch);margin-bottom:32px">What brings you to Flourish Psychology?</p><p style="font-size:15px;color:var(--t2);text-align:center;margin-bottom:32px">Select everything that resonates with you.</p><div class="og" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px">'+og+'</div><div id="err1" style="text-align:center;font-size:13px;color:var(--rs);margin-bottom:12px;display:none">Please select at least one area.</div><div style="display:flex;justify-content:center;gap:12px;margin-top:32px"><button class="bk" onclick="stp(0)">Back</button><button class="bp" onclick="valS1()">Continue</button></div>';
+document.getElementById('s2').innerHTML='<div id="vt2" style="font-size:14px;color:var(--teal);text-align:center;margin-bottom:24px;font-style:italic;min-height:20px"></div><p style="font-family:var(--serif);font-size:26px;font-weight:400;text-align:center;color:var(--ch);margin-bottom:32px">Have you worked with a therapist before?</p><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:420px;margin:0 auto 32px"><div class="oc" onclick="sel(this,\'Yes\')"><div style="font-size:15px;font-weight:500;color:var(--ch)">Yes</div></div><div class="oc" onclick="sel(this,\'No\')"><div style="font-size:15px;font-weight:500;color:var(--ch)">No</div></div><div class="oc" onclick="sel(this,\'Not sure\')"><div style="font-size:15px;font-weight:500;color:var(--ch)">Not sure</div></div></div><div style="display:flex;justify-content:center;gap:12px;margin-top:32px"><button class="bk" onclick="stp(1)">Back</button><button class="bp" onclick="stp(3)">Continue</button></div>';
+document.getElementById('s3').innerHTML='<div id="vt3" style="font-size:14px;color:var(--teal);text-align:center;margin-bottom:24px;font-style:italic;min-height:20px"></div><p style="font-family:var(--serif);font-size:26px;font-weight:400;text-align:center;color:var(--ch);margin-bottom:16px">How can we reach you?</p><p style="font-size:15px;color:var(--t2);text-align:center;margin-bottom:32px">We\u2019ll use this to connect you with the right therapist.</p><div style="margin-bottom:20px"><label style="display:block;font-size:12px;font-weight:500;color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">First Name</label><input id="pn" class="fi" placeholder="Your first name"></div><div style="margin-bottom:20px"><label style="display:block;font-size:12px;font-weight:500;color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Email</label><input id="pe" type="email" class="fi" placeholder="your@email.com"></div><div style="margin-bottom:20px"><label style="display:block;font-size:12px;font-weight:500;color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Phone</label><input id="pp" type="tel" class="fi" placeholder="(555) 000-0000"></div><div id="err3" style="text-align:center;font-size:13px;color:var(--rs);margin-bottom:12px;display:none">Please fill in all three fields.</div><div style="display:flex;justify-content:center;gap:12px;margin-top:32px"><button class="bk" onclick="stp(2)">Back</button><button class="bp" onclick="valS3()">Continue</button></div>';
+document.getElementById('s4').innerHTML='<p style="font-family:var(--serif);font-size:26px;font-weight:400;text-align:center;color:var(--ch);margin-bottom:16px">Anything else you\u2019d like us to know?</p><p style="font-size:15px;color:var(--t2);text-align:center;margin-bottom:32px">Share as much or as little as you\u2019d like.</p><textarea id="pnt" class="fi" style="resize:none;min-height:100px;line-height:1.6" placeholder="Optional \u2014 but we\u2019re listening."></textarea><div style="display:flex;justify-content:center;gap:12px;margin-top:32px"><button class="bk" onclick="stp(3)">Back</button><button class="bp" onclick="doSubmit()">Submit</button></div>';
+dots(0);
+}
+
+// === BUILD DASHBOARD ===
+function buildDash(){
+var h='<div style="max-width:1320px;margin:0 auto;padding:24px">';
+h+='<style>.flip-card{perspective:1000px;cursor:pointer;height:140px}.flip-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}.flip-card.flipped .flip-inner{transform:rotateY(180deg)}.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);background:var(--cm);padding:20px;overflow:hidden}.flip-front::before,.flip-back::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);opacity:.5}.flip-back{transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center}.flip-back p{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6}.flip-back .fb-title{font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;font-weight:500}.flip-hint{position:absolute;bottom:8px;right:12px;font-size:10px;color:rgba(255,255,255,.2)}</style>';
+h+='<div class="metrics-g" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px">';
+h+=fc('mI','23','Inquiries This Month','\u2191 18%','What This Measures','Total intake form submissions this month. This is your top-of-funnel volume \u2014 how many people are raising their hand for help.','Benchmark: 20\u201340 inquiries/month per clinician for a healthy practice.','');
+h+=fc('mC','14','Converted','\u2191 22%','What This Measures','Inquiries that resulted in a booked first appointment. Each conversion is a potential long-term recurring client generating $600+/month.','Target: 10\u201315 new clients/month across the practice.','');
+h+=fc('','61%','Conversion Rate','\u2191 8pts','What This Measures','Percentage of inquiries that convert to booked appointments. This is the single most important metric for practice growth.','Industry average: 30\u201340%. Above 50% indicates a strong intake system.','');
+h+=fc('','8 min','Avg. First Response','<span style="color:var(--gd)">Was 6+ hours</span>','What This Measures','Time between form submission and first contact. Speed is everything in mental health \u2014 the person who reaches out is most motivated in that moment.','Inquiries contacted within 1 hour convert at 3x the rate of 24-hour responses.','<div id="LT" style="font-family:monospace;color:var(--gd);font-size:13px;margin-top:8px;display:none"></div>');
+h+='</div>';
+h+='<div class="metrics-g" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px">';
+h+=fc('','$8,400','Revenue Impact','\u2191 This month','How We Calculate This','Estimated additional monthly revenue from new client conversions. Based on avg. session rate \u00d7 weekly frequency \u00d7 new clients converted this month.','3 new clients/clinician \u00d7 4 clinicians \u00d7 $150/session \u00d7 4 weeks = $7,200\u2013$8,400.','');
+h+=fc('','$7,200','Client Lifetime Value','Per client avg.','How We Calculate This','Average total revenue per client over their engagement with the practice. Retention is where the real money lives.','$150/session \u00d7 weekly \u00d7 48 weeks avg. retention = $7,200. Every lost lead costs this much.','');
+h+=fc('','$2,100','Revenue Per Clinician','Monthly avg.','How We Calculate This','Average monthly revenue generated per clinician from new client conversions only. Does not include existing caseload revenue.','Target: $3,000\u2013$5,000/clinician/month from new conversions as caseloads fill.','');
+h+=fc('','$0','Cost Per Acquisition','Organic only','What This Measures','Marketing spend divided by new clients acquired. Currently $0 because all inquiries are organic \u2014 Google, Psychology Today, referrals. No paid ads.','This means every dollar spent on the conversion system is pure ROI \u2014 no ad spend competing for budget.','');
+h+='</div>';
+h+='<div class="metrics-g" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px">';
+h+=fc('','47','Active Caseload','Across all clinicians','What This Measures','Total active clients currently being seen across the entire practice. This is your recurring revenue base.','Current capacity across 4 clinicians is approximately 80 clients. You\u2019re at 59% utilization \u2014 significant room to grow.','');
+h+=fc('','48%','Clinician Utilization','Avg. across practice','What This Measures','Average percentage of available appointment slots that are filled across all clinicians. Dr. Fox is at 92%, others are significantly lower.','Target: 70\u201380% utilization. Below 50% means clinicians have capacity that isn\u2019t being filled by the intake system.','');
+h+=fc('','\u2191 12%','Week-over-Week','Inquiry trend','What This Measures','Change in inquiry volume compared to the previous week. Tracks momentum and helps identify whether marketing, press, or referral efforts are driving results.','Consistent week-over-week growth of 5\u201310% compounds dramatically over 90 days.','');
+h+=fc('','84%','Sequence Completion','7-touch cadence','What This Measures','Percentage of leads that receive all scheduled touchpoints in the 7-touch sequence before converting or closing out.','Higher completion rates mean no leads are falling through the cracks. Target: 90%+.','');
+h+='</div>';
+h+='<div id="MCard" style="padding:20px;border-radius:var(--r);background:var(--cm);border:1px solid var(--gs);margin-bottom:20px;display:none"><div style="font-size:11px;color:var(--gd);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Recommended Clinician Match</div><div id="MN" style="font-size:16px;font-weight:500;color:#fff;margin-bottom:4px"></div><div id="MDt" style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6"></div><div id="MAv" style="display:inline-block;margin-top:10px;font-size:12px;padding:4px 12px;border-radius:100px;background:var(--ss);color:var(--sg)"></div></div>';
+h+='<div id="EPan" style="padding:20px;border-radius:var(--r);background:var(--cm);margin-bottom:20px;display:none"><div style="font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Auto-Response Sent \u2014 Email Preview</div><div id="EPC" style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;padding:16px;background:rgba(255,255,255,.02);border-radius:var(--r2);border-left:2px solid var(--teal)"></div></div>';
+// Pipeline
+var leads=[['Inquiry','cI',2,[[' James R.','Anxiety','Touch 1 of 7','2 hours ago','Yes'],[' Priya S.','Self-Growth','Touch 1 of 7','4 hours ago','No']]],['First Call','',3,[[' Maria L.','Couples','Touch 3 of 7','Yesterday','Yes'],[' David K.','Depression','Touch 2 of 7','Yesterday','No'],[' Aisha N.','Trauma','Touch 2 of 7','2 days ago','Yes']]],['Follow-Up','',2,[[' Chen W.','Work & Career','Touch 4 of 7','3 days ago','Yes'],[' Emma J.','Anxiety','Touch 5 of 7','5 days ago','No']]],['Booked','',2,[[' Rachel M.','Eating & Body Image','Appt. Thursday','Carolyn Light','Yes'],[' Tom B.','Depression','Appt. Friday','Dr. Fox','No']]],['Active Client','',1,[[' Nicole P.','Self-Esteem','Intake complete','Shoshanna Tokar','Yes']]]];
+h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div style="font-family:var(--serif);font-size:20px;color:#fff">Patient Pipeline</div><div style="font-size:11px;padding:4px 12px;border-radius:100px;background:var(--tg);color:var(--tm);text-transform:uppercase;letter-spacing:.08em">Live</div></div>';
+h+='<div class="pipe-g" style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px">';
+leads.forEach(function(col){
+h+='<div style="background:rgba(255,255,255,.02);border-radius:var(--r);padding:14px;min-height:180px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06)"><span style="font-size:11px;font-weight:500;color:var(--t3);text-transform:uppercase;letter-spacing:.08em">'+col[0]+'</span><span '+(col[1]?'id="'+col[1]+'"':'')+' style="font-size:11px;padding:2px 8px;border-radius:100px;background:rgba(255,255,255,.06);color:var(--t3)">'+col[2]+'</span></div>'+(col[1]==='cI'?'<div id="colI">':'');
+col[3].forEach(function(l){var nm=l[0].trim();h+='<div class="lc" onclick="sJ(\''+nm+'\',\''+l[1]+'\',\''+l[4]+'\',\''+l[3]+'\')"><div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px">'+nm+'</div><div style="font-size:11px;color:var(--tm);margin-bottom:5px">'+l[1]+'</div><div style="display:inline-flex;font-size:10px;padding:2px 8px;border-radius:100px;background:var(--ss);color:var(--sg)">'+l[2]+'</div><div style="font-size:10px;color:var(--t3);margin-top:5px">'+l[3]+'</div></div>';});
+h+=(col[1]==='cI'?'</div>':'')+'</div>';
+});
+h+='</div>';
+// Split: Touch + Activity
+h+='<div class="split-g" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px"><div><div style="font-family:var(--serif);font-size:20px;color:#fff;margin-bottom:16px">Active Sequence \u2014 <span id="TN" style="color:var(--tm)">James R.</span></div><div style="display:flex;background:var(--cm);border-radius:var(--r);padding:20px;overflow-x:auto" id="TL"></div></div><div><div style="font-family:var(--serif);font-size:20px;color:#fff;margin-bottom:16px">Activity Feed</div><div id="AF" style="background:var(--cm);border-radius:var(--r);padding:16px;max-height:260px;overflow-y:auto"></div></div></div>';
+// Templates
+h+='<div style="margin-bottom:28px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div style="font-family:var(--serif);font-size:20px;color:#fff">Sequence Templates</div><div style="font-size:11px;padding:4px 12px;border-radius:100px;background:var(--tg);color:var(--tm);text-transform:uppercase;letter-spacing:.08em">7-Touch</div></div><div class="tmpl-g" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">';
+TPL.forEach(function(t,i){var st=i===0?'var(--sg)':i===1?'var(--gd)':'rgba(255,255,255,.1)';
+h+='<div id="tc'+i+'" style="padding:16px;border-radius:var(--r2);background:var(--cm);cursor:pointer;position:relative;transition:all .3s" onclick="shTpl('+i+')"><div style="position:absolute;top:12px;right:12px;width:8px;height:8px;border-radius:50%;background:'+st+'" id="ts'+i+'"></div><div style="font-size:10px;color:var(--gd);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">'+t.num+'</div><div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:4px">'+t.title+'</div></div>';});
+h+='</div></div>';
+h+='</div>';
+document.getElementById('V1').innerHTML=h;
+// Build touch timeline
+var tl=document.getElementById('TL');var steps=[{s:1,l:'Touch 1',d:'Auto-email',t:'10:14 AM'},{s:2,l:'Touch 2',d:'Same-day call',t:'In progress'},{s:0,l:'Touch 3',d:'Follow-up email',t:'Tomorrow'},{s:0,l:'Touch 4',d:'Text',t:'Day 4'},{s:0,l:'Touch 5',d:'Phone call',t:'Day 7'},{s:0,l:'Touch 6',d:'Final',t:'Day 10'},{s:0,l:'Touch 7',d:'Close-out',t:'Day 14'}];
+steps.forEach(function(s,i){var bg=s.s===1?'background:var(--ss);color:var(--sg)':s.s===2?'background:var(--gs);color:var(--gd);animation:pu 2s ease infinite':'background:rgba(255,255,255,.04);color:var(--t3)';var icon=s.s===1?'\u2713':''+(i+1);
+tl.innerHTML+='<div id="tch'+i+'" style="flex:1;min-width:100px;text-align:center;padding:0 6px"><div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:13px;'+bg+'" id="ti'+i+'">'+icon+'</div><div style="font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">'+s.l+'</div><div style="font-size:10px;color:rgba(255,255,255,.4)">'+s.d+'</div><div style="font-size:10px;color:rgba(255,255,255,.4)" id="tt'+i+'">'+s.t+'</div></div>';});
+// Activity feed
+var af=document.getElementById('AF');
+[['9:42 AM','cv','Rachel M.','Appointment booked with Carolyn Light'],['9:38 AM','ca','David K.','Same-day call completed. Scheduling follow-up.'],['9:15 AM','au','Priya S.','Auto-response sent. Self-Growth inquiry.'],['8:52 AM','au','James R.','Auto-response sent. Anxiety inquiry.'],['8:30 AM','sc','Tom B.','Intake scheduled with Dr. Fox for Friday']].forEach(function(a){af.innerHTML+=afItem(a[0],a[1],a[2],a[3]);});
+}
+
+function fc(id,v,l,t,bTitle,bText,bBench,x){return '<div class="flip-card" onclick="this.classList.toggle(\'flipped\')"><div class="flip-inner"><div class="flip-front"><div '+(id?'id="'+id+'"':'')+' style="font-family:var(--serif);font-size:36px;font-weight:300;color:#fff;line-height:1">'+v+'</div><div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-top:8px">'+l+'</div><div style="font-size:12px;color:var(--sg);margin-top:8px">'+t+'</div>'+x+'<div class="flip-hint">tap to learn more</div></div><div class="flip-back"><div class="fb-title">'+bTitle+'</div><p>'+bText+'</p><p style="margin-top:8px;color:var(--sg);font-size:11px">'+bBench+'</p></div></div></div>';}
+function afItem(time,type,name,text){var c={au:'var(--tm)',ca:'var(--gd)',cv:'var(--sg)',sc:'var(--rs)'};return '<div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.03)"><span style="font-size:10px;font-family:monospace;color:var(--t3);min-width:80px;padding-top:2px">'+time+'</span><span style="width:6px;height:6px;border-radius:50%;background:'+(c[type]||'var(--tm)')+';margin-top:6px;flex-shrink:0"></span><span style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.5"><strong style="color:#fff;font-weight:500">'+name+'</strong> \u2014 '+text+'</span></div>';}
+function addAF(time,type,name,text){var af=document.getElementById('AF');if(!af)return;var d=document.createElement('div');d.style.cssText='display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.03);animation:fu .5s ease';d.innerHTML=afItem(time,type,name,text).replace('<div style="display:flex','<div style="display:contents');af.insertBefore(d,af.firstChild);}
+
+// === BUILD REPORT ===
+function buildReport(){
+var h='<div style="max-width:900px;margin:0 auto;padding:40px 24px 80px">';
+h+='<div style="text-align:center;margin-bottom:60px"><h1 style="font-family:var(--serif);font-size:36px;font-weight:300;color:#fff;margin-bottom:8px">Flourish Psychology</h1><p style="font-size:14px;color:var(--t3);letter-spacing:.06em">Monthly Performance Report</p><div style="display:inline-block;margin-top:16px;padding:6px 20px;border-radius:100px;background:rgba(255,255,255,.04);font-size:12px;color:var(--t3);letter-spacing:.08em;text-transform:uppercase">March 2026</div></div>';
+h+='<div class="rpt-g" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:60px">';
+h+=rc('23','Total Inquiries','\u2191 18% from February');h+=rc('61%','Conversion Rate','\u2191 8 pts from February');h+=rc('8 min','Avg. Response Time','Previously 6+ hours');h+=rc('14','New Clients','\u2191 from 2/month baseline');
+h+='</div>';
+h+='<div style="margin-bottom:60px"><h3 style="font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:24px">Clinician Utilization</h3>';
+h+=ub('Dr. Sadi Fox',92);h+=ub('Carolyn Light',45);h+=ub('Shoshanna Tokar',30);h+=ub('Henna Samtani',25);h+='</div>';
+h+='<div style="margin-bottom:60px"><h3 style="font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:24px">Inquiry Sources</h3>';
+[['Google Search','38%'],['Psychology Today','22%'],['Instagram','18%'],['Referral','14%'],['Other','8%']].forEach(function(s){h+='<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(255,255,255,.7)">'+s[0]+'</span><span style="font-size:14px;color:#fff;font-weight:500">'+s[1]+'</span></div>';});
+h+='</div>';
+// Revenue impact
+h+='<div style="margin-bottom:60px;padding:32px;border-radius:var(--r);background:var(--cm);text-align:center"><div style="font-size:11px;color:var(--gd);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Estimated Revenue Impact</div><div style="font-family:var(--serif);font-size:48px;font-weight:300;color:#fff">$8,400</div><div style="font-size:13px;color:var(--t3);margin-top:8px;text-transform:uppercase;letter-spacing:.08em">Additional Monthly Revenue</div><div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:12px;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto">Based on converting 3 additional clients per clinician at $150/session weekly. 4 clinicians \u00d7 3 new clients \u00d7 $600/month = $7,200 conservative estimate.</div></div>';
+h+='<div style="text-align:center;padding-top:40px;border-top:1px solid rgba(255,255,255,.06)"><p style="font-size:13px;color:var(--t3)">Prepared by Desta Works \u2014 Care Coordination Platform</p><p style="margin-top:8px;font-size:12px;color:rgba(255,255,255,.3)">Confidential \u2014 Flourish Psychology</p></div></div>';
+document.getElementById('V2').innerHTML=h;
+}
+function rc(v,l,t){return '<div style="padding:40px;border-radius:var(--r);background:var(--cm);text-align:center"><div style="font-family:var(--serif);font-size:64px;font-weight:300;color:#fff;line-height:1">'+v+'</div><div style="font-size:13px;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-top:12px">'+l+'</div><div style="font-size:13px;color:var(--sg);margin-top:12px">'+t+'</div></div>';}
+function ub(n,p){return '<div style="display:flex;align-items:center;gap:16px;margin-bottom:16px"><span style="font-size:14px;color:rgba(255,255,255,.8);min-width:160px">'+n+'</span><div style="flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.06);overflow:hidden"><div style="height:100%;border-radius:3px;background:var(--teal);width:'+p+'%"></div></div><span style="font-size:13px;color:var(--t3);min-width:40px;text-align:right">'+p+'%</span></div>';}
+
+// === DASHBOARD UPDATE ===
+function dashUp(){
+var nm=D.name||'New Patient',cn=D.concerns[0]||'General Inquiry',now=new Date(),el=ST?Math.round((now-ST)/1000):0,ts=tn();
+var mi=document.getElementById('mI');if(mi)mi.textContent=parseInt(mi.textContent)+1;
+var lt=document.getElementById('LT');if(lt){lt.style.display='block';lt.textContent=nm+' \u2014 responded in '+el+'s';}
+var m=CM[cn]||CM['Something Else'];
+var mcd=document.getElementById('MCard');if(mcd){document.getElementById('MN').textContent=m.n;document.getElementById('MDt').textContent=m.d;document.getElementById('MAv').textContent=m.a;mcd.style.display='block';}
+var cc=D.concerns,ct='';if(cc.length===1)ct=cc[0].toLowerCase();else if(cc.length>1)ct=cc.slice(0,-1).map(function(c){return c.toLowerCase();}).join(', ')+' and '+cc[cc.length-1].toLowerCase();
+var ep=document.getElementById('EPan');if(ep){document.getElementById('EPC').innerHTML='<strong>To:</strong> '+(D.email||'patient@email.com')+'<br><strong>From:</strong> Stephanie \u2014 Flourish Psychology<br><br>Hi '+nm+',<br><br>Thank you for reaching out to Flourish Psychology'+(ct?' about '+ct+' support':'')+'. It takes courage to take this step, and we want you to know we\u2019re here for you.<br><br>I\u2019ll personally reach out to you shortly to answer any questions and help you find the right therapist.<br><br>Warmly,<br>Stephanie<br><span style="color:var(--t3)">Flourish Psychology Care Team</span>';ep.style.display='block';}
+var col=document.getElementById('colI');if(col){var cd=document.createElement('div');cd.className='lc nw';cd.onclick=function(){sJ(nm,cn,D.history||'No',ts);};cd.innerHTML='<div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px">'+nm+' (New)</div><div style="font-size:11px;color:var(--tm);margin-bottom:5px">'+cn+'</div><div style="display:inline-flex;font-size:10px;padding:2px 8px;border-radius:100px;background:var(--ss);color:var(--sg)">Touch 1 of 7</div><div style="font-size:10px;color:var(--t3);margin-top:5px">Just now</div>';col.insertBefore(cd,col.firstChild);var ci=document.getElementById('cI');if(ci)ci.textContent=parseInt(ci.textContent)+1;}
+var tn2=document.getElementById('TN');if(tn2)tn2.textContent=nm;
+addAF(ts,'au',nm,'Auto-response sent in '+el+'s. '+cn+' inquiry.');
+document.getElementById('NN').textContent=nm;var np=document.getElementById('NP');np.style.display='block';chime();setTimeout(function(){np.style.display='none';},4000);
+setTimeout(function(){addAF(tn(),'ca','Stephanie','Same-day call initiated for <strong style="color:#fff">'+nm+'</strong>.');var ti=document.getElementById('ti1');if(ti){ti.style.background='var(--ss)';ti.style.color='var(--sg)';ti.style.animation='none';ti.textContent='\u2713';}var tt=document.getElementById('tt1');if(tt)tt.textContent=tn();var ts2=document.getElementById('ts1');if(ts2)ts2.style.background='var(--sg)';},8000);
+setTimeout(function(){addAF(tn(),'ca','Stephanie','Call completed with <strong style="color:#fff">'+nm+'</strong>. Voicemail left. Follow-up scheduled.');},15000);
+}
+
+// INIT
+buildIntake();buildDash();buildReport();
+</script>
+</body></html>
